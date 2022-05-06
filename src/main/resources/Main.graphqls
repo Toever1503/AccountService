@@ -1,0 +1,38 @@
+schema {
+    query: Query # dung select
+    mutation: Mutation # mutation dung them sua xoa du lieu
+}
+
+type Query {
+    findCustomerById(id: ID!): Customer
+    findAllCustomers(first: Int, size: Int): [Customer]
+}
+type Mutation {
+    createCustomer(customer: CustomerInput!): Customer
+}
+
+type Customer { #day la dto thay cho viec tao class
+    id: ID
+    fullName: String
+    username: String
+    email: String
+
+    activationCode: String
+    isActive: Boolean
+    timeFailed: Int
+    phone: String
+    imageProfile: String
+#    timeLocked: Int
+    dayLockedNumbers: Int
+}
+
+input CustomerInput { #map to CustomerModel
+    id: ID
+    fullName: String
+    username: String
+    password: String
+    email: String
+    isActive: Boolean
+    imageProfile: String
+    phone: String
+}
